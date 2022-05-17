@@ -76,8 +76,44 @@ def __init__(COLORS=COLORS_):
     if rentalcar_valor == 0:
         daypass_valor = daypass(diarias, idades, COLORS)
 
-    extras()
+    extra_total = extras(COLORS)
+
+    # total_dolar = (area, onibus_valor, diarias_valor, rentalcar_valor, alimentacao_valor, daypass_valor, extra_total)
+    return (area, onibus_valor, diarias_valor, rentalcar_valor, alimentacao_valor, daypass_valor, extra_total)
 
 
-def extras():
-    print()
+def extras(COLORS=COLORS_):
+    resp = 10
+    extra_total = 0
+    while resp != 0:
+        print(f'{COLORS["text"]}\nMUITA ANTENCAO!!! Para o destino de Orlando e Miami, temos ainda CINCO ATRACOES ESPECIAIS para lhe oferecer visando ainda mais a sua comodidade e diversao.')
+        print('Voce podera escolher tantas quantas quiser dentre as opcoes.')
+
+        print(' 1 - Ingresso para os fantasticos parques de Walt Disney World')
+        print(' 2 - Dia de compras no Sawgrass Mills e Dolphin Mall.')
+        print(' 3 - Discovery Cove e Sea World.')
+        print(' 4 - Ingresso para assistir ao jogo do Miami Heat ou Orlando Magic.')
+        print(' 5 - Ingressos para Universal Studios, Island of Adventures e Blue Men Group.')
+        print(f'Caso nao tenha interesse, basta digitar 0{COLORS["final"]}')
+
+        resp = ler(f'{COLORS["write"]}: ', 0, 5)
+
+        print(f'{COLORS["final"]}', end='')
+        if resp == 1: extra_total = extras_template(COLORS, extra_total, 'ingressos para os parques tematicos de Walt Disney World', 4, 74.50)
+        elif resp == 2: extra_total = extras_template(COLORS, extra_total, 'dia de compras no Sawgrass Mills e Dolphins Mall', 12, 15.00)
+        elif resp == 3: extra_total = extras_template(COLORS, extra_total, 'a atracao Discovery Cove e Sea World Adventure', 5, 179.50)
+        elif resp == 4: extra_total = extras_template(COLORS, extra_total, 'adquirir ingressos para um jogo de basketball de sua preferencia dos times Miami Heat ou Orlando Magic', '12 anos completos pagam $39.90, acima de 12 anos $89.90 e crianças de até 5', 179.50)
+        elif resp == 5: extra_total = extras_template(COLORS, extra_total, 'ingressos para o Universal Studios. Island of Adventures Park and Blue Men Group', '5', 179.50)
+        print(f'{COLORS["final"]}{COLORS["text"]}Lembrando, caso não queira selecionar mais opcoes, basta digitar o zero.')
+        print('\n\n\n\n')
+    
+    return extra_total
+
+def extras_template(COLORS=COLORS_, extra_total=0, nome='nome', idade=0, valor=0):
+    print(f'\n{COLORS["text"]}Voce  escolheu {nome}. Quantos ingressos deseja adquirir?')
+    print(f'ATENCAO: criancas de ate {idade} anos completos nao pagam por esta atracao extra.{COLORS["final"]}')
+
+    x = ler(f'{COLORS["write"]}: ', 0, 30)
+    print(COLORS['final'], end='')
+
+    return (x * valor) + extra_total

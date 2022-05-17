@@ -72,6 +72,39 @@ print(COLORS['final'])
 print(COLORS['write'], end='')
 #
 
+# values = (area, onibus_valor, diarias_valor, rentalcar_valor, alimentacao_valor, daypass_valor, extra_total)
 resp = ler('Digite: ', 0, 10)
+values = (0, 0, 0, 0, 0, 0, 0)
 if resp == 1:
-    MCOMIA.__init__()
+    values = MCOMIA.__init__()
+
+# Definindo bibliotecas para a leitura
+values_biblioteca = {'aerea': values[0],
+                'onibus_valor': values[1],
+                'diarias_valor': values[2],
+                'rentalcar_valor': values[3],
+                'alimentacao_valor': values[4],
+                'daypass_valor': values[5],
+                'extra_total': values[6]}
+
+# Obtendo o valor total
+total_dolar = 0
+for c in range(0, len(values)):
+    total_dolar += values[c]
+
+print(f'{COLORS["regras"]}\nO valor total do pacote de ferias:')
+print(f' Passagens Aereas\t\t U${values_biblioteca["aerea"]:.2f}')
+print(f' Deslocamento de onibus \t U${values_biblioteca["onibus_valor"]:.2f}')
+print(f' Diarias de Hotel \t\t U${values_biblioteca["diarias_valor"]:.2f}')
+print(f' Aluguel de Automovel \t\t U${values_biblioteca["rentalcar_valor"]:.2f}')
+print(f' Refeicoes \t\t\t U${values_biblioteca["alimentacao_valor"]:.2f}')
+print(f' Day-Pass \t\t\t U$%{values_biblioteca["daypass_valor"]:.2f}')
+print(f' Atracoes Extras \t\t U${values_biblioteca["extra_total"]:.2f}')
+
+print(f'\n VALOR FINAL \t\t U${total_dolar:.2f}')
+
+print(f'\n Observe que o valor do pacote esta em dolar americano, digite o cambio do dia para a conversao imediata em reais{COLORS["final"]}')
+cambio = float(input(f'{COLORS["text"]}: '))
+total_real = total_dolar * cambio
+
+print(f'\n\n\n{COLORS["final"]}{COLORS["regras"]}O VALOR TOTAL DO SEU PACOTE E DE R${total_real:.2f}, BOAS FERIAS!!!!!!!!\n\n{COLORS["final"]}')

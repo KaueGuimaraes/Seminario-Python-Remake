@@ -10,7 +10,7 @@ def onibus(idades, colors):
     """
     resp = str(input(f'{colors["write"]}\nDeseja adicionar um onibus com o percurso de ida e volta saindo de Pires do Rio ate o aeroporto escolhido? (S/N) ')).upper().replace(' ', '')
 
-    if resp[0] == 'S':
+    if resp == 'S':
         bus_ad = idades['adulto'] * 20
         bus_cr = idades['crianca'] * 10
         bus = bus_ad + bus_cr
@@ -55,7 +55,7 @@ def rentalcar(diarias, pessoas, colors):
     resp = str(input(f'{colors["write"]}Deseja adicionar o aluguel de veiculo para sua maior comodidade no destino adquirido? (S/N) ')).upper().replace(' ', '')
 
     print(colors['final'] + colors['text'], end='')
-    if resp[0] == 'S':
+    if resp == 'S':
         if pessoas <= 5: # Será necessário somente 1 veículo
             multi = 49.90, 69.90
             print(f'Deseja protecao total ou parcial do veiculo?')
@@ -106,7 +106,7 @@ def alimentacao(diarias, pessoas, idades, colors):
     else:
         print(f'Voce escolheu Alimentacao', end=' ')
         if resp == 1: # Completa
-            mutli = 30, 20, 5 # adulto, criança, infântil
+            multi = 30, 20, 5 # adulto, criança, infântil
             print('Completa com almoco e jantar')
         elif resp == 2: # Jantar
             multi = 20, 15, 3
@@ -132,7 +132,7 @@ def daypass(diarias, idades, colors):
     print(f'nas linhas conjugadas de metro, trem e onibus municipais.{colors["final"]}')
     
     resp = str(input(f'{colors["write"]}Deseja adquiri-lo? (S/N) ')).upper().replace(' ', '')
-    if resp[0] == 'S':
+    if resp == 'S':
         pass_ad = idades['adulto'] * diarias * 9
         pass_cr = idades['crinca'] * diarias * 5
         total = pass_ad + pass_cr
