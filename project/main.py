@@ -49,6 +49,7 @@ COLORS = {'title': '\033[35m',
           'text': '\033[34m',
           'write': '\033[32m',
           'final': '\033[m'}
+cambio = 0
 
 
 #INICIO DO PROGRAMA
@@ -72,7 +73,7 @@ print(COLORS['final'])
 print(COLORS['write'], end='')
 #
 
-# values = (area, onibus_valor, diarias_valor, rentalcar_valor, alimentacao_valor, daypass_valor, extra_total)
+# values = (aerea, onibus_valor, diarias_valor, rentalcar_valor, alimentacao_valor, daypass_valor, extra_total)
 resp = ler('Digite: ', 0, 10)
 values = (0, 0, 0, 0, 0, 0, 0)
 if resp == 1:
@@ -103,8 +104,11 @@ print(f' Atracoes Extras \t\t U${values_biblioteca["extra_total"]:.2f}')
 
 print(f'\n VALOR FINAL \t\t U${total_dolar:.2f}')
 
-print(f'\n Observe que o valor do pacote esta em dolar americano, digite o cambio do dia para a conversao imediata em reais{COLORS["final"]}')
-cambio = float(input(f'{COLORS["text"]}: '))
-total_real = total_dolar * cambio
+if cambio != 1:
+    print(f'\n Observe que o valor do pacote esta em dolar americano, digite o cambio do dia para a conversao imediata em reais{COLORS["final"]}')
+    cambio = float(input(f'{COLORS["text"]}: '))
+    total_real = total_dolar * cambio
+else:
+    total_real = total_dolar
 
 print(f'\n\n\n{COLORS["final"]}{COLORS["regras"]}O VALOR TOTAL DO SEU PACOTE E DE R${total_real:.2f}, BOAS FERIAS!!!!!!!!\n\n{COLORS["final"]}')
